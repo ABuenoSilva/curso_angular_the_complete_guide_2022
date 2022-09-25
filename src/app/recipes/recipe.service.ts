@@ -9,23 +9,25 @@ export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>;
 
-  private recipes: Recipe[] = [
-    new Recipe('Teste Recipe',
-      'This is simply a test',
-      'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
-      [
-        new Ingredient('Farinha', 500),
-        new Ingredient('Milk', 1)
-      ]),
-    new Recipe('Teste NOVO Recipe',
-      'This is simply a NOVO test',
-      'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
-      [
-        new Ingredient('Bread',2),
-        new Ingredient('Cheese',1),
-        new Ingredient('Meat',2)
-      ])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe('Teste Recipe',
+  //     'This is simply a test',
+  //     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
+  //     [
+  //       new Ingredient('Farinha', 500),
+  //       new Ingredient('Milk', 1)
+  //     ]),
+  //   new Recipe('Teste NOVO Recipe',
+  //     'This is simply a NOVO test',
+  //     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
+  //     [
+  //       new Ingredient('Bread',2),
+  //       new Ingredient('Cheese',1),
+  //       new Ingredient('Meat',2)
+  //     ])
+  // ];
+
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
@@ -53,6 +55,11 @@ export class RecipeService {
 
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice());
   }
 
