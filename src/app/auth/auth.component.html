@@ -1,8 +1,13 @@
+<!-- mensagem de erro com criação dinâmica de componente -->
+<ng-template appPlaceHolder></ng-template>
 <div class="row">
   <div class="col-xs-12 cols-md-6 col-offset-3">
-    <div class="alert alert-danger" *ngIf="error">
+    <!-- mensagem de erro com box simples -->
+    <!-- <div class="alert alert-danger" *ngIf="error">
       <p>{{ error }}</p>
-    </div>
+    </div> -->
+    <!-- mensagem de erro com loading dinâmico (ngif e input/output) - AlertComponent -->
+    <!-- <app-alert [message] = "error" (close)="onHandleError()" *ngIf="error"></app-alert> -->
     <div *ngIf="isLoading">
       <app-loading-spinner style="text-align: center;"></app-loading-spinner>
     </div>
