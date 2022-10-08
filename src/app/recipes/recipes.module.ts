@@ -19,6 +19,8 @@ import { RecipesComponent } from "./recipes.component";
     RecipeEditComponent,
   ],
   imports: [RouterModule, CommonModule, ReactiveFormsModule, RecipesRoutingModule],
+  //não é mais necessário exportar os componentes "internos" depois que o módulo de routing é incorporado
+  /*
   exports: [
     RecipesComponent,
     RecipeListComponent,
@@ -26,6 +28,7 @@ import { RecipesComponent } from "./recipes.component";
     RecipeItemComponent,
     RecipeEditComponent,
   ]
+  */
 })
 export class RecipesModule {
 
